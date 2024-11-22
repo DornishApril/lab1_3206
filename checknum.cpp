@@ -23,6 +23,7 @@ int main(){
             current_length = 0;
             offset+=10;
             i=i-2;
+            continue;
             //break;
             
 
