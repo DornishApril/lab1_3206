@@ -2,31 +2,28 @@
 
 int main(){
     
-    string a = "dvdf";
+    unordered_map <int,int> charmap;
+    string s = "bb";
 
     int current_length=0;
     int highest_length=0;
-    int quit=0;
-    int j=0;
+    int offset =0;
 
-    while(!quit){
 
-        unordered_map<char,int> charmap;
-        int i=j;
+    int p=0;
 
-    for(int i=j;a[i]!='\0';i++){
+    for(int i=0;s[i]!='\0';i++){
         //cout<<(int)a[i]<<"\n";
-        if(a[i]=='\0')
-            quit =1;
-        cout<<i<<"\n";
-        charmap[a[i]]+=1;
+        //cout<<i<<"\n";
+        p=(int)s[i]+offset;
+        charmap[p]+=1;
 
-        if(charmap[a[i]]==2){
+        if(charmap[p]==2){
             highest_length = (highest_length<current_length)? (current_length):(highest_length);
             current_length = 0;
-            charmap.clear();
-            j=i-2;
-            break;
+            offset+=10;
+            i=i-2;
+            //break;
             
 
         }
@@ -34,10 +31,14 @@ int main(){
             current_length++;
         }
     }
-}
+
     highest_length = (highest_length<current_length)? (current_length):(highest_length);
 
-    cout<<"---"<<highest_length;
+    cout<<"---"<<highest_length<<"\n";
+
+    for(const auto& pair:charmap){
+        cout<<(char)pair.first<<" --- "<<pair.second<<"\n";
+    }
     
 
 }
